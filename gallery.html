@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interactive Photo Gallery</title>
+<style>
+    #image {
+        width: 500px;
+        height: 300px;
+        border: 2px solid #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+    }
+    .preview {
+        width: 100px;
+        margin: 10px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h1>Photo Gallery</h1>
+<div id="image">Hover over an image below to display here.</div>
+
+<div>
+    <img class="preview" src="https://via.placeholder.com/500x300/ff7f7f/333?text=Image+1" alt="Beautiful Red Scene" onmouseover="upDate(this)" onmouseout="undo()">
+    <img class="preview" src="https://via.placeholder.com/500x300/7fbfff/333?text=Image+2" alt="Peaceful Blue Scene" onmouseover="upDate(this)" onmouseout="undo()">
+    <img class="preview" src="https://via.placeholder.com/500x300/7fff7f/333?text=Image+3" alt="Vibrant Green Scene" onmouseover="upDate(this)" onmouseout="undo()">
+</div>
+
+<script>
+function upDate(previewPic) {
+    console.log("Mouse over image detected.");
+    console.log("Alt text: " + previewPic.alt);
+    console.log("Image source: " + previewPic.src);
+
+    document.getElementById("image").innerHTML = previewPic.alt;
+    document.getElementById("image").style.backgroundImage = "url('" + previewPic.src + "')";
+}
+
+function undo() {
+    document.getElementById("image").style.backgroundImage = "url('')";
+    document.getElementById("image").innerHTML = "Hover over an image below to display here.";
+}
+</script>
+
+</body>
+</html>
